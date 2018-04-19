@@ -5,6 +5,7 @@ pipeline {
       steps {
         echo 'Hello World!'
         echo "Hello ${MY_NAME}!"
+        echo "Hi ${params.Name}!"
         echo "${TEST_USER_USR}"
         echo "${TEST_USER_PSW}"
       }
@@ -13,5 +14,8 @@ pipeline {
   environment {
     MY_NAME = 'Mrinal'
     TEST_USER = credentials('test-user')
+  }
+  parameters {
+    string(name: 'Name', defaultValue: 'whoever you are', description: 'Who should I say hi to?')
   }
 }
